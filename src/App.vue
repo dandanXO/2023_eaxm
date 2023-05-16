@@ -250,7 +250,7 @@ export default {
           }
         }
       }
-      // 去除重複相同等級分類使用
+      // 去除重複相同等級分類 只會有正確複層分類
       let map = new Map(); 
       let newArray = new Array();   
       for (let i = 0; i < findPath.length; i++) { 
@@ -265,6 +265,7 @@ export default {
         } 
       }  
       search(newArray[prelog].id, commitData)
+      // 儲存
       store.commit('addData', commitData)
       localStorage.setItem('remPath', JSON.stringify(commitData))
     }

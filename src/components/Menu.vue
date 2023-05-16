@@ -88,8 +88,6 @@ export default {
         }else{
           if( datas[element].id !== currentClickID){
           datas[element].isOpen = false;
-          }else{
-            console.log('idinincvdi3')
           }
           if(datas[element].chil){
             recursiveHandler(datas[element].chil, currentClickID, currentItem, reRoot)
