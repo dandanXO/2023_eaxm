@@ -170,7 +170,13 @@ export default {
           ],
         }
       })
-    store.commit('addData', dataMenu)
+    if(localStorage.getItem('remPath')){
+      let temp = JSON.parse(localStorage.getItem('remPath'))
+      store.commit('addData', temp)
+    }else{
+      store.commit('addData', dataMenu)
+    }
+    
     let drapDownData = ref([])
     const recursiveHandler = (datas)=>{
       for (const element in datas) {
@@ -221,6 +227,7 @@ export default {
       
       selectRecursiveHandler(store.state.dataM, event.target.value)
       let commitData = store.state.dataM
+      // 深度優先的控制
       let prelog = 0
       function search (targetId, datas){
         for (const element in datas){
@@ -259,6 +266,7 @@ export default {
       }  
       search(newArray[prelog].id, commitData)
       store.commit('addData', commitData)
+      localStorage.setItem('remPath', JSON.stringify(commitData))
     }
     return{
       optionOnclick,

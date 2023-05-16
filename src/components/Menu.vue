@@ -63,6 +63,7 @@ export default {
       // 上方總體處理完 當前點擊的狀態交換
       item.isOpen = !item.isOpen
       item.onSelected = !item.onSelected
+      localStorage.setItem('remPath', JSON.stringify(store.state.dataM))
     }
      // 檢查是否為跟節點與不是 loop檢查
      // 如果是跟節點 關閉所有 自己以外的節點
@@ -104,7 +105,7 @@ export default {
     return{
       openHandler,
       recursiveHandler,
-      currentMainOpenId
+      currentMainOpenId,
     }
   },
 };
